@@ -1,6 +1,6 @@
-package org.example.Address.Reader;
+package org.example.address.reader;
 
-import org.example.Address.Model.Address;
+import org.example.address.model.Address;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;

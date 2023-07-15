@@ -1,6 +1,5 @@
-package org.example.Address.Model;
+package org.example.address.model;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 

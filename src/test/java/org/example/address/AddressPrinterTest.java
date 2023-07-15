@@ -1,15 +1,12 @@
-package org.example.Address;
+package org.example.address;
 
-import org.example.Address.Model.Address;
-import org.example.Address.Model.AddressLineDetail;
-import org.example.Address.Model.Country;
-import org.example.Address.Reader.JsonReader;
+import org.example.address.model.Address;
+import org.example.address.reader.JsonReader;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,6 +1,6 @@
-package org.example.Address;
+package org.example.address;
 
-import org.example.Address.Model.Address;
+import org.example.address.model.Address;
 
 import java.util.List;
 
