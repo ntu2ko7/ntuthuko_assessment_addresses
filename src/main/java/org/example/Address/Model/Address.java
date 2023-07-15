@@ -20,16 +20,22 @@ public class Address {
     private String suburbOrDistrict;
 
     public String toPrettyPrint() {
-        return String.format("Type: %s - %s - %s - %s - %s - %s",
+        return String.format("Type: %s%s%s%s%s%s",
                 getType().getName(),
                 Optional.ofNullable(getAddressLineDetail())
-                        .map(AddressLineDetail::toPrettyPrint)
+                        .map(addressLineDetail -> " - " + addressLineDetail.toPrettyPrint())
                         .orElse(""),
-                getCityOrTown(),
+                Optional.ofNullable(getCityOrTown())
+                        .map(cityOrTown -> " - " + cityOrTown)
+                        .orElse(""),
                 Optional.ofNullable(getProvinceOrState())
-                        .map(ProvinceOrState::getName)
+                        .map(provinceOrState -> " - " + provinceOrState.getName())
                         .orElse(""),
-                getPostalCode(),
-                getCountry().getName());
+                Optional.ofNullable(getPostalCode())
+                        .map(postalCode -> " - " + postalCode)
+                        .orElse(""),
+                Optional.ofNullable(getCountry())
+                        .map(country -> " - " + country.getName())
+                        .orElse(""));
     }
 }

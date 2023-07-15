@@ -34,8 +34,8 @@ public class AddressPrinterTest {
         AddressPrinter addressPrinter = new AddressPrinter();
         String result = addressPrinter.prettyPrintAddresses(addresses);
         String expected = "Type: Physical Address - Address 1 Line 2 - City 1 - Eastern Cape - 1234 - South Africa\n" +
-                "Type: Postal Address -  - City 2 -  - 2345 - Lebanon\n" +
-                "Type: Business Address - Address 3  - City 3 -  - 3456 - South Africa\n";
+                "Type: Postal Address - City 2 - 2345 - Lebanon\n" +
+                "Type: Business Address - Address 3  - City 3 - 3456 - South Africa\n";
         Assertions.assertEquals(expected, result);
     }
 }
