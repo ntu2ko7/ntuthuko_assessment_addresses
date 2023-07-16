@@ -20,24 +20,27 @@ public class Address {
     private String suburbOrDistrict;
 
 
-    public String getInvalidFields(Address address) {
+    public String getInvalidFields() {
         StringBuilder stringBuilder = new StringBuilder();
-        if (address.getPostalCode() == null || !address.getPostalCode().matches("\\d+")) {
+        if (getPostalCode() == null || !getPostalCode().matches("\\d+")) {
             stringBuilder.append("Postal code is invalid. ");
         }
-        if (address.getCountry() == null) {
+        if (getCountry() == null) {
             stringBuilder.append("Country is invalid. ");
         }
-        if (address.getCountry() != null) {
-            if (Optional.ofNullable(address.getCountry().getCode()).map(code -> code.equals("ZA")).orElse(false) &&
-                    !Optional.ofNullable(address.getProvinceOrState())
+        if (getCountry() != null) {
+            if (Optional.ofNullable(getCountry().getCode()).map(code -> code.equals("ZA")).orElse(false) &&
+                    !Optional.ofNullable(getProvinceOrState())
                             .map(ProvinceOrState::isValidProvinceOrState)
                             .orElse(false)) {
                 stringBuilder.append("Province or state is invalid. Province is required for South Africa. ");
             }
         }
-        if (address.getAddressLineDetail() == null || !address.getAddressLineDetail().isValidAddressLineDetail()) {
+        if (getAddressLineDetail() == null || !getAddressLineDetail().isValidAddressLineDetail()) {
             stringBuilder.append("Address detail is invalid. At least one line is required.");
+        }
+        if (stringBuilder.length() != 0) {
+            stringBuilder.insert(0, String.format("Address %s: ", getId()));
         }
         return stringBuilder.toString();
     }

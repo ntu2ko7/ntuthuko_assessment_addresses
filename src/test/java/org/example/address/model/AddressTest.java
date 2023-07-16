@@ -12,7 +12,7 @@ class AddressTest {
         address.setAddressLineDetail(new AddressLineDetail());
 
         String expected = "Postal code is invalid.";
-        String actual = address.getInvalidFields(address);
+        String actual = address.getInvalidFields();
 
         assertTrue(actual.contains(expected));
     }
@@ -25,7 +25,7 @@ class AddressTest {
         address.setAddressLineDetail(new AddressLineDetail());
 
         String expected = "Postal code is invalid. ";
-        String actual = address.getInvalidFields(address);
+        String actual = address.getInvalidFields();
 
         assertTrue(actual.contains(expected));
     }
@@ -37,7 +37,7 @@ class AddressTest {
         address.setAddressLineDetail(new AddressLineDetail());
 
         String expected = "Country is invalid. ";
-        String actual = address.getInvalidFields(address);
+        String actual = address.getInvalidFields();
 
         assertTrue(actual.contains(expected));
     }
@@ -45,6 +45,7 @@ class AddressTest {
     @Test
     public void testGetInvalidFieldsWhenCountryIsSouthAfricaAndProvinceOrStateIsNull() {
         Address address = new Address();
+        address.setId("1");
         Country country = new Country();
         country.setCode("ZA");
         address.setPostalCode("12345");
@@ -53,8 +54,8 @@ class AddressTest {
         detail.setLine1("366 Kent Ave");
         address.setAddressLineDetail(detail);
 
-        String expected = "Province or state is invalid. Province is required for South Africa. ";
-        String actual = address.getInvalidFields(address);
+        String expected = "Address 1: Province or state is invalid. Province is required for South Africa. ";
+        String actual = address.getInvalidFields();
 
         assertEquals(expected, actual);
     }
@@ -62,6 +63,7 @@ class AddressTest {
     @Test
     public void testGetInvalidFieldsWhenAddressLineDetailIsNull() {
         Address address = new Address();
+        address.setId("1");
         Country country = new Country();
         country.setCode("ZA");
         ProvinceOrState provinceOrState = new ProvinceOrState();
@@ -71,8 +73,8 @@ class AddressTest {
         address.setCountry(country);
         address.setProvinceOrState(provinceOrState);
 
-        String expected = "Address detail is invalid. At least one line is required.";
-        String actual = address.getInvalidFields(address);
+        String expected = "Address 1: Address detail is invalid. At least one line is required.";
+        String actual = address.getInvalidFields();
 
         assertEquals(expected, actual);
     }
@@ -83,13 +85,14 @@ class AddressTest {
         detail.setLine1(null);
         detail.setLine2(null);
 
-        Address addr = new Address();
-        addr.setPostalCode("12345");
-        addr.setCountry(new Country());
-        addr.setAddressLineDetail(detail);
+        Address address = new Address();
+        address.setId("1");
+        address.setPostalCode("12345");
+        address.setCountry(new Country());
+        address.setAddressLineDetail(detail);
 
-        String expected = "Address detail is invalid. At least one line is required.";
-        String actual = addr.getInvalidFields(addr);
+        String expected = "Address 1: Address detail is invalid. At least one line is required.";
+        String actual = address.getInvalidFields();
 
         assertEquals(expected, actual);
     }
