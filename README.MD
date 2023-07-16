@@ -1,0 +1,2 @@
+- Highest common factor is shown in the CommonFactorClassTest
+- running main shows invalid addresses in the output
