@@ -1,2 +1,3 @@
 - Highest common factor is shown in the CommonFactorClassTest
 - running main shows invalid addresses in the output
+- pretty print is shown in the AddressPrinterTest
